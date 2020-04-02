@@ -1,6 +1,9 @@
 CROSS SECTIONS FOR PYTHON
 ====================================
 
+Why?  The TENDL library is massive (30 GB unzipped p+n+d) and I only wanted the MF=3.  The compressed files are ~20MB.
+
+
 The data was taken from TENDL-n
 
 https://tendl.web.psi.ch/tendl_2019/talys.html
@@ -34,7 +37,19 @@ Only MT:
            44: [2,1,3],
            45: [3,3,6],
 
+The ENDF files have been read into python dictionaries (only the MF=3 and listed MT above).  The dictionaries are then converted to JSON and compressed into *.z files (extension irrelevant) using zlib in python.
 
+To read a cross section from a file:
+
+1. Import the tendl class from the tendl file
+2. know the dir that stores the *.z files
+3. projectile protons + neutrons  (1,0 for protons, 0,1 for neutrons, 1,1 for deuterons)
+4. target protons and nucleons
+5. residual protons and nucleons
+
+
+from tendl import tendl
+xs = tendl.read_xs(xs_dir, projectile_protons, projectile_neutrons, target_protons, target_nucleons, residual_protons, residual_nucleons)
 
 
 
