@@ -1,0 +1,3 @@
+MF File is split up into "files" or blocks
+MF stored in col 71-72
+MF3 Reaction cross sections
